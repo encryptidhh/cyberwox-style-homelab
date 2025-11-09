@@ -8,9 +8,8 @@ It's always been on my agenda to build a homelab according to this tutorial; how
 This project was built to replicate an enterprise-style cybersecurity environment, enabling hands-on practice with system administration, SOC workflows, and security monitoring. By configuring Splunk SIEM and Active Directory within an isolated network, the lab serves as a foundation for log analysis, intrusion detection, and blue-team skill development.
 
 ## How to Use this Repo
-This repository serves only to document the issues I encountered while setting up my homelab. I don't have a separate tutorial to provide, as (for the most part), I followed CyberWOX's tutorial to the letter, apart from using OPNSense rather than pfSense for my chosen firewall. I'll also provide (hash-verified) images/ISO files that you can download and use for your own homelab setup.
+This repository serves only to document the issues I encountered while setting up my homelab. I don't have a separate tutorial to provide, as (for the most part), I followed CyberWOX's tutorial to the letter, apart from using OPNSense rather than pfSense for my chosen firewall.
 
 ## 🔗 Quick Links
 - Issues Doc: [cyberwox-style-homelab/Recorded-Issues.md](https://github.com/encryptidhh/cyberwox-style-homelab/blob/main/Recorded-Issues.md)
 - CyberWOX's tutorial (text + PDF): [cyberwox-style-homelab/cyberwox-tutorial/CyberWOX-Tutorial.md](https://github.com/encryptidhh/cyberwox-style-homelab/blob/main/cyebrwox-tutorial/CyberWOX-Tutorial.md)
-- ISO Files + Hashes: [cyberwox-style-homelab/Relevant-Files/Files-and-Hashes.md](https://www.github.com/encryptidhh/cyberwox-style-homelab/Relevant-Files/Files-and-Hashes.md)
