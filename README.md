@@ -5,6 +5,7 @@ It's always been on my agenda to build a homelab according to this tutorial; how
   <img width="1581" height="917" alt="Sample homelab network topology" src="https://github.com/user-attachments/assets/485ae81d-9ce3-4637-9dae-83c79d566f61" />
   <figcaption style="background-color:#f6f8fa;">I mean, just look at this... </figcaption>
 </figure>
+
 This project was built to replicate an enterprise-style cybersecurity environment, enabling hands-on practice with system administration, SOC workflows, and security monitoring. By configuring Splunk SIEM and Active Directory within an isolated network, the lab serves as a foundation for log analysis, intrusion detection, and blue-team skill development.
 
 ## How to Use this Repo
