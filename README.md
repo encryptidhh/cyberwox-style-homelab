@@ -12,5 +12,5 @@ This repository serves only to document the issues I encountered while setting u
 
 ## 🔗 Quick Links
 - Issues Doc: [cyberwox-style-homelab/Recorded-Issues.md](https://www.github.com/encryptidhh/cyberwox-style-homelab/Recorded-Issues.md)
-- CyberWOX's tutorial (text + PDF): [cyberwox-style-homelab/cyberwox-tutorial/CyberWOX-Tutorial.md](https://www.github/com/encryptidhh/cyberwox-style-homelab/cyebrwox-tutorial/CyberWOX-Tutorial.md)
+- CyberWOX's tutorial (text + PDF): [cyberwox-style-homelab/cyberwox-tutorial/CyberWOX-Tutorial.md](https://github.com/encryptidhh/cyberwox-style-homelab/blob/main/cyebrwox-tutorial/CyberWOX-Tutorial.md)
 - ISO Files + Hashes: [cyberwox-style-homelab/Relevant-Files/Files-and-Hashes.md](https://www.github.com/encryptidhh/cyberwox-style-homelab/Relevant-Files/Files-and-Hashes.md)
