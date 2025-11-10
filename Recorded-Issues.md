@@ -93,11 +93,11 @@ Computer Configuration -> Policies -> Windows Settings -> Security Settings -> L
    2. Added VMNet6 to connect `SplunkServer` to OPNsense.
    3. Reloaded `SplunkServer` → checked IPs via `ip a`.
 * Steps taken after reinstallation:
-  1. Created YAML config file:
+ 1. Created a YAML config file:
 ```
 sudo nano /etc/netplan/initial-config-file
 ```
-  2. Added the following configuration into the YAML file:
+  2.  Added the following configuration into the YAML file:   
 ```
 network:
   version: 2
@@ -115,7 +115,7 @@ sudo systemctl restart systemd-networkd
 ```
 services.msc → VMware NAT Service → Restart/Start.
 ```
-* Checked for updates within `SplunkServer`:
+* Checked for updates within the `SplunkServer` Ubuntu machine:
 ```
 sudo apt install tasksel
 sudo tasksel ubuntu-desktop
@@ -128,7 +128,7 @@ reboot
 * Confirmed GUI installation by watching for GUI-only apps (e.g., Thunderbird).
 # 6. Splunk Forwarder Communication
 * Issue: Splunk Forwarder and Splunk Instance not communicating.
-* Observation: Windows machine had an APIPA address, meaning static IP config was needed.
+* Observation: Windows machine had an APIPA address, meaning a static IP config was needed.
 * Fix: Navigate to Networking Settings within Windows Control Panel:
 ```
 Control Panel -> Networking and Sharing Center -> Ethernet0
