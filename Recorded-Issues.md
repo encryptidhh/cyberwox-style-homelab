@@ -1,10 +1,10 @@
 # 1. Initial Setup
 * Goal: Set up a CyberWOX-style homelab for cybersecurity practice, using VMware VMs.
 * Main components:
-  * VMWare (VMware Workstation 17.5.2)
+  * VMware (VMware Workstation 17.5.2)
   * pfSense/OPNsense Firewall
   * Security Onion (for monitoring and analysis)
-  * Splunk Server
+  * SplunkServer (an Ubuntu machine with a Splunk Instance)
   * Windows Domain Controller and Clients
   * Kali Linux Machine
  
@@ -16,7 +16,11 @@
 * Issue: Could not extract firewall image as a .dv2 file.
     * Tried using **bzip2** as suggested by a Medium article - [link here](https://medium.com/@akobeajiboluemmanuel/opnsense-firewall-setup-and-installation-on-vmware-10a3057b07aa).
     * Didn't work - produced blank lines/hanging output.
-* Fix: Used **7-Zip** on my host machine to extract the ISO successfully.
+<img width="940" height="162" alt="bzip2 CLI Output" src="https://github.com/user-attachments/assets/a7b5d305-c8db-406b-846c-f09b9d8c4f8b" />
+
+* Fix: Used **7-Zip** on my host machine to successfully extract the ISO.
+<img width="930" height="356" alt="7Zip ISO extraction (OPNsense)" src="https://github.com/user-attachments/assets/a45a5d01-1b07-4feb-9fbc-7af395379427" />
+
 ## Installation Mode
 * Issue: “Not enough disks to install.”
 * Fix: Changed from ZFS (requires multiple disks) to UEFI mode (no disks required).
@@ -37,6 +41,7 @@
     6. Test with ping [OPNsense IP].
     7. Open Firefox → type in OPNsense IP to access the GUI.
 * Result: GUI connection successful, no timeout errors.
+<img width="940" height="420" alt="OPNsense GUI window" src="https://github.com/user-attachments/assets/c6ba5598-4794-42d1-9ac3-c9bc5a80f733" />
   
 # 3. Security Onion and Management Machine
 ## SecOnionMgmt Placement
@@ -51,7 +56,10 @@
   * Memory ≥ **8 GB**
   * CPU processors ≥ **4** (not cores).
 ## Connectivity Problems
-* Issue: SecOnionMgmt couldn’t access Security Onion GUI even though ping worked both ways.
+* Issue: SecOnionMgmt couldn’t access the Security Onion GUI even though ping worked both ways.
+<img width="940" height="500" alt="image" src="https://github.com/user-attachments/assets/7c1ddfe1-034d-45e7-9c08-4a3ce7ee1869" />
+<img width="940" height="683" alt="image" src="https://github.com/user-attachments/assets/12941d9b-64f2-43ca-8f80-aa5df471bf8b" />
+
 * Fix: Placed both VMs on the same internet-accessible subnet (VMNet8 - NAT).
 * Added management IP to Security Onion firewall:
   
@@ -64,6 +72,8 @@ sudo so-firewall apply
 # 4. Active Directory Setup
 ## AD Certificate Services
 * Issue: “Red notification (1)” under AD CS Wizard.
+<img width="759" height="427" alt="Example image from MS Learn" src="https://github.com/user-attachments/assets/e4211c45-fc3e-4866-b0ad-a9157785a57f" />
+
 * Fix: Enable Log on as a service in Group Policy:
 ```
 Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment
@@ -76,13 +86,17 @@ Computer Configuration -> Policies -> Windows Settings -> Security Settings -> L
   3. On the Domain Controller: confirm it’s set to Domain mode ([YOURname].local).
   4. Add [YOURname].local as the DNS Server Name in OPNsense.
   5. On Windows client → Control Panel → Network and Sharing Center → Ethernet0 Properties.
-  6. Under TCP/IPv4 Properties, statically set:
+<img width="940" height="699" alt="image" src="https://github.com/user-attachments/assets/175aed3a-28a5-4d4c-b3f1-67a519ffb638" />
+  7. Under TCP/IPv4 Properties, statically set:
      * IP address
      * Subnet mask
      * Preferred DNS Server = Domain Controller IP
-  7. Disable Windows Firewall on both the DC and the client.
-  8. Rejoin the machine to the domain.
-  9. When prompted, use credentials like `[YOURname]\Username`.
+     * Default gateway = 192.168.2.1
+<img width="470" height="559" alt="image" src="https://github.com/user-attachments/assets/105d52b0-86b2-4ecc-8b97-5043681450d1" />
+
+  8. Disable Windows Firewall on both the DC and the client.
+  9. Rejoin the machine to the domain.
+  10. When prompted, use credentials like `[YOURname]\Username`.
 
  # 5. Ubuntu Server + Splunk Configuration
  ## Internet Connectivity
@@ -129,6 +143,8 @@ reboot
 # 6. Splunk Forwarder Communication
 * Issue: Splunk Forwarder and Splunk Instance not communicating.
 * Observation: Windows machine had an APIPA address, meaning a static IP config was needed.
+<img width="696" height="460" alt="image" src="https://github.com/user-attachments/assets/d95a2fe2-bc92-473b-8000-5ffc3a28c6d9" />
+
 * Fix: Navigate to Networking Settings within Windows Control Panel:
 ```
 Control Panel -> Networking and Sharing Center -> Ethernet0
